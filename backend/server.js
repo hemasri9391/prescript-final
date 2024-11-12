@@ -13,9 +13,15 @@ const port = process.env.PORT || 4000
 connectDB()
 connectCloudinary()
 
+// Define CORS options
+const corsOptions = {
+  origin: ['https://prescripto-final.vercel.app', 'https://prescripto-final-admin.vercel.app'],
+  credentials: true
+};
+
 // middlewares
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors(corsOptions));
 
 // api endpoints
 app.use("/api/user", userRouter)
